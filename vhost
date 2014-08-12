@@ -1,0 +1,5 @@
+dn: apacheServerName=#DOMAIN#,ou=vhosts,dc=rfc1925,dc=org
+objectClass: apacheConfig
+apacheServerName: #DOMAIN#
+apacheDocumentRoot: /var/www
+

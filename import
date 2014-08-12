@@ -1,0 +1,4 @@
+dn: ou=vhosts,dc=rfc1925,dc=org
+objectClass: organizationalUnit
+ou: vhosts
+
