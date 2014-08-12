@@ -22,9 +22,8 @@ GNU Parallel
 ------------
 
 If you are working with many domains, it's best to use ``parallel``
-instead of ``xargs`` for better utilization of CPU/Cores.
+instead of ``xargs`` for better utilization of CPU/Cores::
 
-::
     sudo apt-get install parallel
     < list parallel CMD {}
 
@@ -40,9 +39,8 @@ everything from the directory.
 
 haproxy.cfg has 'strict-sni' - that is - it will refuse to load the
 website if SNI was not provided or it doesn't have the correct
-certificate:
+certificate::
 
-::
     $ openssl s_client -servername sdghjhsgs.com -connect 127.0.0.1:443
     CONNECTED(00000003)
     140657022617232:error:14077458:SSL routines:SSL23_GET_SERVER_HELLO:tlsv1 unrecognized name:s23_clnt.c:762:
@@ -108,7 +106,8 @@ this repository.  Just add ``cn={4}mod_vhost_ldap.ldif`` to
 Imporing test domains
 ---------------------
 
-::
+To generate LDIF that can be imported to SLAPD::
+
   cat import > import.ldif
   < allowed_sites parallel --jobs 100% ./gen-vhosts.sh {}
   ldapadd -x -D <binddn> -w <bindpw> < import.ldif
@@ -116,8 +115,18 @@ Imporing test domains
 Apache2 configuration
 ---------------------
 
-::
-   apt-get install libapache2-mod-vhost-ldap
+Install mod_vhost_ldap::
+
+  sudo apt-get install libapache2-mod-vhost-ldap
 
 Now configure the LDAP access and basedn in
 ``/etc/apache2/mods-enabled/vhost_ldap.conf``
+
+Enable required modules::
+
+  sudo a2enmod ldap
+  sudo a2enmod vhost_ldap
+
+And restart apache2::
+
+  sudo apache2ctl restart
