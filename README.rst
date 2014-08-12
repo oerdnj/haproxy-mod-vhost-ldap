@@ -4,6 +4,14 @@ haproxy on top of mod_vhost_ldap
 
 Right now this is just collection of random notes.
 
+HAProxy performance
+-------------------
+
+There are some numbers available in https://github.com/observing/balancerbattle
+
+The contestants were http-proxy (node.js), nginx, haproxy and
+haproxy+stud.
+
 Debian/Ubuntu HAProxy packages
 ------------------------------
 
