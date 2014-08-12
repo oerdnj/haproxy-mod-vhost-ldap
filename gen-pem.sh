@@ -17,5 +17,7 @@ fail_if_error() {
     }
 }
 
-openssl req -new -utf8 -subj "/C=CZ/commonName=$DOMAIN/" -key server.key -out $DOMAIN.csr
-openssl x509 -req -days 3650 -in $DOMAIN.csr -signkey server.key -out $DOMAIN.crt
+openssl req -new -utf8 -subj "/C=CZ/commonName=$DOMAIN/" -key server.key -out cert.d/$DOMAIN.csr
+openssl x509 -req -days 3650 -in $DOMAIN.csr -signkey server.key -out cert.d/$DOMAIN.crt
+cat server.key cert.d/$DOMAIN.crt > cert.d/$DOMAIN.pem
+rm cert.d/$DOMAIN.crt
